@@ -35,7 +35,7 @@ System Design Overview<br>
 	<br>
 Installation & Setup
 # Clone the repository
-git clone [https://github.com/your-username/smart-task-manager.git](https://github.com/prajukta-panda/SmartTask_Manager.git)s
+git clone https://github.com/prajukta-panda/SmartTask_Manager.git
 cd smart-task-manager
 # Create virtual environment
 python -m venv venv
