@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <div class="content">
+        <h1>Update Task</h1>
+      <div class="form">
+        <form action="/update/{{task.id}}" method="POST">
+            <input type="text" name="content" id="content"  value="{{task.content}}">
+            <label>
+            Priority
+            <select name="priority" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </label>
+
+        <label>
+            Status
+            <select name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+        </label>
+            <input type="Submit" value="Update">
+        </form>
+    </div>
+    </div>    
+{% endblock %}

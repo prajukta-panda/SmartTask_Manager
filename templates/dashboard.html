@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class="content">
+    <h2>Your Todo list</h2>
+
+    <form method="get" style="margin-bottom: 15px;">
+        <label>Priority:</label>
+        <select name="priority">
+            <option value="">All</option>
+            <option value="High" {{ 'selected' if request.args.get('priority')=='High' }}>High</option>
+            <option value="Medium" {{ 'selected' if request.args.get('priority')=='Medium' }}>Medium</option>
+            <option value="Low" {{ 'selected' if request.args.get('priority')=='Low' }}>Low</option>
+        </select>
+
+        <label>Status:</label>
+        <select name="status">
+            <option value="">All</option>
+            <option value="pending" {{ 'selected' if request.args.get('status')=='pending' }}>Pending</option>
+            <option value="completed" {{ 'selected' if request.args.get('status')=='completed' }}>Completed</option>
+        </select>
+
+        <button type="submit">Filter</button>
+    </form>
+
+
+    {% if tasks|length < 1 %} <h4> There are no tasks :) create one below!!</h4>
+
+
+        {% else %}
+        <table>
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Priority</th>
+                <th>status</th>
+                <th>Actions</th>
+                <th>due date</th>
+
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td> {{ task.content }}</td>
+                <td>{{ task.date_created.date() }}</td>
+                <td>{{ task.priority}}</td>
+                <td>{{ task.status }}</td>
+                <td>
+                    <a href="/delete/{{ task.id }}">Delete</a>
+                    <br>
+                    <a href="/update/{{ task.id }}">Update</a>
+                </td>
+                <td>{{task.due_date}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <form action="{{ url_for('add_task') }}" method="POST">
+            <input type="text" name="content" id="content" placeholder="Enter Task">
+            <label>
+                Priority
+                <select name="priority" required>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </label>
+
+            <label>
+                Status
+                <select name="status" required>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+             </label>
+            <label>
+                Due Date
+                <input type="date" name="due_date" required>
+            </label>
+
+            <input type="Submit" value="Add Task">
+        </form>
+        <p><a href="/logout">logout</a> </p>
+</div>
+{% endblock %}
