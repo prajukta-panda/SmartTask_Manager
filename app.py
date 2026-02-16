@@ -1,6 +1,7 @@
 from flask import Flask , render_template, redirect, request,url_for,jsonify,make_response
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
+import os
 #import jwt
 #import uuid
 from flask_migrate import Migrate
@@ -9,12 +10,15 @@ from datetime import datetime, timezone, timedelta
 from flask_jwt_extended import JWTManager, create_access_token, create_refresh_token,jwt_required, get_jwt_identity,unset_jwt_cookies
 from flask_mail import Mail, Message
 from apscheduler.schedulers.background import BackgroundScheduler
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://my_db_user:mypassword@localhost:5432/my_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config["JWT_SECRET_KEY"] = "super-secret-key"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
 #cookies based JWT
 app.config["JWT_TOKEN_LOCATION"] = ["cookies"]
 app.config["JWT_ACCESS_COOKIE_NAME"] = "jwt_token"
@@ -23,8 +27,8 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
-    MAIL_USERNAME='your_email@gmail.com',
-    MAIL_PASSWORD='tgjvbzfmvuaitswl',
+    MAIL_USERNAME=os.getenv("MAIL_USERNAME"),
+    MAIL_PASSWORD=os.getenv("MAIL_PASSWORD"),
     MAIL_DEFAULT_SENDER='your_email@gmail.com'
     )
 
