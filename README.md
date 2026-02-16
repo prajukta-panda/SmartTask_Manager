@@ -2,7 +2,7 @@
 Smart Task Management System
 A backend-focused, multi-user task management application built with Flask, designed to handle deadline-aware tasks and automated email reminders using background schedulers.
 This project goes beyond a basic todo app by implementing real-world backend concepts such as background jobs, time-based workflows, user isolation, and SMTP email automation.
-
+<br>
 Features
 	• 🔐 User authentication (Register / Login / Logout)
 	• 👤 Multi-user task isolation (each user sees only their tasks)
@@ -12,7 +12,7 @@ Features
 	• 🔎 Filter tasks by priority and status
 	• 🗄️ PostgreSQL database with SQLAlchemy ORM
 	• 🔄 Database migrations using Flask-Migrate
-
+<br>
 Tech Stack
 	• Backend: Python, Flask
 	• Database: PostgreSQL, SQLAlchemy
@@ -20,7 +20,7 @@ Tech Stack
 	• Email Service: Flask-Mail (SMTP)
 	• Auth & Security: Flask sessions
 	• Frontend: HTML, CSS (Jinja templates)
-
+<br>
 System Design Overview
 	1. Users register and log in securely
 	2. Tasks are stored with metadata (priority, status, due date, user_id)
@@ -30,6 +30,7 @@ System Design Overview
 		○ Calculates remaining days
 		○ Triggers email reminders when deadlines approach
 	5. Emails are sent dynamically to the task owner
+	<br>
 Installation & Setup
 # Clone the repository
 git clone https://github.com/your-username/smart-task-manager.git
@@ -44,20 +45,22 @@ pip install -r requirements.txt
 flask db upgrade
 # Run the application
 python app.py
-
+<br>
 Key Learnings
 	• Implemented background schedulers for time-based automation
 	• Integrated SMTP email systems with authentication handling
 	• Designed scalable relational database models
 	• Debugged real-world issues like async jobs, email failures, and migrations
-
+<br>
  Future Improvements
 	• Celery + Redis for scalable background jobs
 	• REST API version of the backend
 	• React frontend
 	• Dockerization
-
+<br>
  Author
+ <br>
 Prajukta Panda
+<br>
 Backend Developer | Python | Flask
 
