@@ -49,6 +49,7 @@ flask db upgrade
 python app.py
 <br>
 Key Learnings
+<br>
 	• Implemented background schedulers for time-based automation
 	• Integrated SMTP email systems with authentication handling
 	• Designed scalable relational database models
