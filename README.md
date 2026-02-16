@@ -4,6 +4,7 @@ A backend-focused, multi-user task management application built with Flask, desi
 This project goes beyond a basic todo app by implementing real-world backend concepts such as background jobs, time-based workflows, user isolation, and SMTP email automation.
 <br>
 Features
+<br>
 	• 🔐 User authentication (Register / Login / Logout)
 	• 👤 Multi-user task isolation (each user sees only their tasks)
 	• 🗓️ Create tasks with priority, status, and due date
@@ -14,6 +15,7 @@ Features
 	• 🔄 Database migrations using Flask-Migrate
 <br>
 Tech Stack
+<br>
 	• Backend: Python, Flask
 	• Database: PostgreSQL, SQLAlchemy
 	• Scheduler: APScheduler
@@ -21,10 +23,10 @@ Tech Stack
 	• Auth & Security: Flask sessions
 	• Frontend: HTML, CSS (Jinja templates)
 <br>
-System Design Overview
+System Design Overview<br>
 	1. Users register and log in securely
 	2. Tasks are stored with metadata (priority, status, due date, user_id)
-	3. APScheduler runs a background job every minute
+	3. APScheduler runs a background job every 24 hours
 	4. The scheduler:
 		○ Scans pending tasks
 		○ Calculates remaining days
